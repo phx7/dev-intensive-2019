@@ -44,7 +44,7 @@ object Utils {
     fun toInitials(firstName:String?, lastName:String?):String{
         var result = "${firstName?.getOrNull(index = 0)?:""}${lastName?.getOrNull(0)?:""}"
         if (result == "") result = null.toString()
-        return result
+        return result.toUpperCase()
     }
 
     fun transliteration(payload:String, divider:String = " "):String{
