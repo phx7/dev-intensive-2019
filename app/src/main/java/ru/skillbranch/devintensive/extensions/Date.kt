@@ -40,63 +40,63 @@ fun Date.humanizeDiff(date: Date = Date()): String {
     }
 }
 
-fun TimeUnits.plural(value: Int): String {
-    var str = ""
-    val time_single: Int = value % 10
-    val time_double: Int = value % 100
-    when (this) {
-        TimeUnits.SECOND -> {
-            str = when (time_double) {
-                in 10..19 -> "секунд"
-                else -> when (time_single) {
-                    0, 5, 6, 7, 8, 9 -> "секунд"
-                    1 -> "секунду"
-                    in 2..4 -> "секунды"
-                    else -> "секунд"
-                }
-            }
-        }
-        TimeUnits.MINUTE -> {
-            str = when (time_double) {
-                in 10..19 -> "минут"
-                else -> when (time_single) {
-                    0, 5, 6, 7, 8, 9 -> "минут"
-                    1 -> "минуту"
-                    in 2..4 -> "минуты"
-                    else -> "минут"
-                }
-            }
-        }
-        TimeUnits.HOUR -> {
-            str = when (time_double) {
-                in 10..19 -> "часов"
-                else -> when (time_single) {
-                    0, 5, 6, 7, 8, 9 -> "часов"
-                    1 -> "час"
-                    in 2..4 -> "часа"
-                    else -> "часов"
-                }
-            }
-
-        }
-        TimeUnits.DAY -> {
-            str = when (time_double) {
-                in 10..19 -> "дней"
-                else -> when (time_single) {
-                    0, 5, 6, 7, 8, 9 -> "дней"
-                    1 -> "день"
-                    in 2..4 -> "дня"
-                    else -> "дней"
-                }
-            }
-        }
-    }
-    return "$value $str"
-}
-
 enum class TimeUnits {
     SECOND,
     MINUTE,
     HOUR,
-    DAY
+    DAY;
+
+    fun plural(value: Int): String {
+        var str = ""
+        val time_single: Int = value % 10
+        val time_double: Int = value % 100
+        when (this) {
+            SECOND -> {
+                str = when (time_double) {
+                    in 10..19 -> "секунд"
+                    else -> when (time_single) {
+                        0, 5, 6, 7, 8, 9 -> "секунд"
+                        1 -> "секунду"
+                        in 2..4 -> "секунды"
+                        else -> "секунд"
+                    }
+                }
+            }
+            MINUTE -> {
+                str = when (time_double) {
+                    in 10..19 -> "минут"
+                    else -> when (time_single) {
+                        0, 5, 6, 7, 8, 9 -> "минут"
+                        1 -> "минуту"
+                        in 2..4 -> "минуты"
+                        else -> "минут"
+                    }
+                }
+            }
+            HOUR -> {
+                str = when (time_double) {
+                    in 10..19 -> "часов"
+                    else -> when (time_single) {
+                        0, 5, 6, 7, 8, 9 -> "часов"
+                        1 -> "час"
+                        in 2..4 -> "часа"
+                        else -> "часов"
+                    }
+                }
+
+            }
+            DAY -> {
+                str = when (time_double) {
+                    in 10..19 -> "дней"
+                    else -> when (time_single) {
+                        0, 5, 6, 7, 8, 9 -> "дней"
+                        1 -> "день"
+                        in 2..4 -> "дня"
+                        else -> "дней"
+                    }
+                }
+            }
+        }
+        return "$value $str"
+    }
 }
