@@ -42,8 +42,8 @@ object Utils {
     }
 
     fun toInitials(firstName:String?, lastName:String?): String? {
-        var result : String? = "${firstName?.getOrNull(index = 0)?:""}${lastName?.getOrNull(0)?:""}".toUpperCase()
-        if (result == "") result = null
+        var result : String? = "${firstName?.trim()?.getOrNull(index = 0)?:""}${lastName?.trim()?.getOrNull(0)?:""}".toUpperCase()
+        if (result?.trim() == "") result = null
         return result
     }
 
