@@ -41,9 +41,9 @@ object Utils {
         return Pair(name?.getOrNull(0), name?.getOrNull(1))
     }
 
-    fun toInitials(firstName:String?, lastName:String?):String{
-        var result = "${firstName?.getOrNull(index = 0)?:""}${lastName?.getOrNull(0)?:""}".toUpperCase()
-        if (result == "") result = null.toString()
+    fun toInitials(firstName:String?, lastName:String?): String? {
+        var result : String? = "${firstName?.getOrNull(index = 0)?:""}${lastName?.getOrNull(0)?:""}".toUpperCase()
+        if (result == "") result = null
         return result
     }
 
